@@ -8,6 +8,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LocalDebuggerWorkingDirectory>$(OutDir)</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>--url http://lenta.ru/news/2015/01/26/nato/ &gt;out.txt</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>--url http://lenta.ru/news/2015/01/27/kremlin/ &gt;out.txt</LocalDebuggerCommandArguments>
   </PropertyGroup>
 </Project>
