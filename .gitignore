@@ -7,4 +7,10 @@ cabal-dev
 *.suo
 *.sdf
 *.opensdf
+*.tlog
+*.obj
+*.log
+*.idb
+*.pdb
+*.user
 
