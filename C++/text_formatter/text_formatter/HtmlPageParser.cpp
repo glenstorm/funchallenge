@@ -102,7 +102,24 @@ string
 ParserAdapter::parse(const std::string &src)
 {
 	GumboOutput* output = gumbo_parse(src.c_str());
-	std::string out = cleantext(output->root);
+	
+	if (nullptr == output)
+		throw std::runtime_error("Unable to get html-root!!!");
+
+	std::string out = "";
+	// Зацементировали.
+	try
+	{
+		out = cleantext(output->root);
+	}
+	catch (std::exception &e)
+	{
+		cout << "Exception: " << e.what() << endl;
+	}
+	catch (...)
+	{
+		cout << "Непредвиденное исключение!!!";
+	}
 	// Do stuff with output->root
 	gumbo_destroy_output(&kGumboDefaultOptions, output);
 
