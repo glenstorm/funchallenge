@@ -13,4 +13,5 @@ cabal-dev
 *.idb
 *.pdb
 *.user
+*.ilk
 
