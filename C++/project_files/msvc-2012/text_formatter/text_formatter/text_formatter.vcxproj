@@ -10,6 +10,20 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\text_formatter\dowloader.cpp" />
+    <ClCompile Include="..\..\..\..\src\text_formatter\HtmlPageParser.cpp" />
+    <ClCompile Include="..\..\..\..\src\text_formatter\main.cpp" />
+    <ClCompile Include="..\..\..\..\src\text_formatter\options.cpp" />
+    <ClCompile Include="..\..\..\..\src\text_formatter\PrettyOut.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\src\text_formatter\convert_utf8_unicode_helper.h" />
+    <ClInclude Include="..\..\..\..\src\text_formatter\dowloader.h" />
+    <ClInclude Include="..\..\..\..\src\text_formatter\HtmlPageParser.h" />
+    <ClInclude Include="..\..\..\..\src\text_formatter\options.h" />
+    <ClInclude Include="..\..\..\..\src\text_formatter\PrettyOut.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{0EDEFD38-D281-48A7-901F-D47AF0AF2A15}</ProjectGuid>
     <RootNamespace>text_formatter</RootNamespace>
@@ -19,14 +33,14 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -44,6 +58,7 @@
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_STLP_DEBUG=1;_SECURE_SCL=1;_HAS_ITERATOR_DEBUGGING=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -57,27 +72,15 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>libxml2.lib;libcurl.lib;gumbo.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="dowloader.h" />
-    <ClInclude Include="HtmlPageParser.h" />
-    <ClInclude Include="options.h" />
-    <ClInclude Include="PrettyOut.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="dowloader.cpp" />
-    <ClCompile Include="HtmlPageParser.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="options.cpp" />
-    <ClCompile Include="PrettyOut.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

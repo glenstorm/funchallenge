@@ -95,7 +95,6 @@ ParserAdapter::cleantext(GumboNode* node) {
 	else {
 		return "";
 	}
-	beginParsing = false;// ƒо сюда доберемс€ только на обратном ходу.
 }
 
 string

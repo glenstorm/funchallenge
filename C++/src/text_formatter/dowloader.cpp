@@ -25,12 +25,10 @@ Dowloader::downloadPage(const string &url)
 {
 	// cout << "url = " << url << endl;
 
-	CURL *curl;
-	CURLcode res;
+	CURLcode res = CURL_LAST;
+	string buffer = "";
 
-	string buffer;
-
-	curl = curl_easy_init();
+	CURL *curl = curl_easy_init();
 	if (curl) {
 		curl_easy_setopt(curl, CURLOPT_HEADER, 0);
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writer);
@@ -40,22 +38,16 @@ Dowloader::downloadPage(const string &url)
 		// Perform the request, res will get the return code
 		res = curl_easy_perform(curl);
 		// Check for errors
-		if (res != CURLE_OK)
+		if (CURLE_OK != res)
 			fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
 
 		// always cleanup
 		curl_easy_cleanup(curl);
 	}
-
-	if (CURLE_OK == res) {
-		return std::move(buffer);
-	}
-	else {
-		return "";
-	}
+	return std::move(buffer);
 }
 
-int 
+int
 Dowloader::writer(char *data, size_t size, size_t nmemb, string *buffer)
 {
 	int result = 0;
