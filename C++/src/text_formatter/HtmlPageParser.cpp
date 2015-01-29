@@ -60,26 +60,26 @@ ParserAdapter::cleantext(GumboNode* node) {
 			if (beginAtricleNode_ == node)
 				beginParsing = false;
 
-			// Устанавливаем куда ссылка идет.
-			if (node->v.element.tag == GUMBO_TAG_A) // Обрабатываем ссылки
+			if (beginParsing)
 			{
-				GumboAttribute* href = gumbo_get_attribute(&node->v.element.attributes, "href"); // предполагаем, что href должен быть всегда. TODO цементнуть
-
-				if (beginParsing)
+				// Устанавливаем куда ссылка идет.
+				if (node->v.element.tag == GUMBO_TAG_A) // Обрабатываем ссылки
 				{
+					GumboAttribute* href = gumbo_get_attribute(&node->v.element.attributes, "href"); // предполагаем, что href должен быть всегда. TODO цементнуть
+
 					ostringstream is;
 					is << " [" << href->value << "]";
 					contents.append(is.str());
 				}
-			}
 
-			// Теперь, если мы прошли </h1>, </h2>, </br>, <br/>, </p> тэг, то нужно перейти на другую строчку.
-			if (node->v.element.tag == GUMBO_TAG_H1 || node->v.element.tag == GUMBO_TAG_H2 ||
-				node->v.element.tag == GUMBO_TAG_H3 || node->v.element.tag == GUMBO_TAG_H4 ||
-				node->v.element.tag == GUMBO_TAG_H5 || node->v.element.tag == GUMBO_TAG_H6 ||
-				node->v.element.tag == GUMBO_TAG_BR || node->v.element.tag == GUMBO_TAG_P)
-			{
-				contents.append("\n\n");
+				// Теперь, если мы прошли </h1>, </h2>, </br>, <br/>, </p> тэг, то нужно перейти на другую строчку.
+				if (node->v.element.tag == GUMBO_TAG_H1 || node->v.element.tag == GUMBO_TAG_H2 ||
+					node->v.element.tag == GUMBO_TAG_H3 || node->v.element.tag == GUMBO_TAG_H4 ||
+					node->v.element.tag == GUMBO_TAG_H5 || node->v.element.tag == GUMBO_TAG_H6 ||
+					node->v.element.tag == GUMBO_TAG_BR || node->v.element.tag == GUMBO_TAG_P)
+				{
+					contents.append("\n\n");
+				}
 			}
 
 			return contents;
@@ -90,7 +90,8 @@ ParserAdapter::cleantext(GumboNode* node) {
 	{
 		if (beginParsing)
 			return std::string(node->v.text.text);
-		else return "";
+		else 
+			return "";
 	}
 	else {
 		return "";
