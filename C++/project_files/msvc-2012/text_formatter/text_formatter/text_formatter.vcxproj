@@ -16,6 +16,10 @@
     <ClCompile Include="..\..\..\..\src\text_formatter\main.cpp" />
     <ClCompile Include="..\..\..\..\src\text_formatter\options.cpp" />
     <ClCompile Include="..\..\..\..\src\text_formatter\PrettyOut.cpp" />
+    <ClCompile Include="..\..\..\..\src\text_formatter\_precomp.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\src\text_formatter\convert_utf8_unicode_helper.h" />
@@ -23,6 +27,7 @@
     <ClInclude Include="..\..\..\..\src\text_formatter\HtmlPageParser.h" />
     <ClInclude Include="..\..\..\..\src\text_formatter\options.h" />
     <ClInclude Include="..\..\..\..\src\text_formatter\PrettyOut.h" />
+    <ClInclude Include="..\..\..\..\src\text_formatter\_precomp.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{0EDEFD38-D281-48A7-901F-D47AF0AF2A15}</ProjectGuid>
@@ -60,6 +65,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_STLP_DEBUG=1;_SECURE_SCL=1;_HAS_ITERATOR_DEBUGGING=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>_precomp.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -75,6 +82,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>_precomp.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

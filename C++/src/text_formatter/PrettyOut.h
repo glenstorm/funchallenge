@@ -18,8 +18,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef _PRETTY_OUT_H_GUARD_
 #define _PRETTY_OUT_H_GUARD_
 
-#include <iostream>
-
 class PrettyOut
 {
 public:

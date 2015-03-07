@@ -14,15 +14,11 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
+#include "_precomp.h"
 #include "PrettyOut.h"
 #include "convert_utf8_unicode_helper.h"
-#include <string>
-#include <sstream>
-
 
 using namespace std;
-
 
 PrettyOut::PrettyOut(const string &wrapStr, int width) :
 		str_(wrapStr),

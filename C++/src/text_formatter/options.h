@@ -18,8 +18,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef _OPTIONS_H_GUARD_
 #define _OPTIONS_H_GUARD_
 
-#include <string>
-
 /**
 @class Options 
 @brief Класс, ответственный за считывание настроек для данной программы.

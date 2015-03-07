@@ -18,8 +18,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef _DOWNLOADER_H_GUARD_
 #define _DOWNLOADER_H_GUARD_
 
-#include <string>
-#include <curl/curl.h>
 
 class Dowloader
 {

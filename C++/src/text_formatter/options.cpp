@@ -15,15 +15,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "_precomp.h"
 #include "options.h"
 
-#include <iostream>
-#include <boost/property_tree/ini_parser.hpp>
-
-#pragma warning(push)
-#pragma warning(disable:4512)
-#include <boost/program_options.hpp>
-#pragma warning(pop)
 
 using namespace boost;
 using namespace std;

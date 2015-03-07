@@ -30,6 +30,9 @@
     <ClCompile Include="..\..\..\..\src\text_formatter\PrettyOut.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\text_formatter\_precomp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\src\text_formatter\dowloader.h">
@@ -45,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\text_formatter\convert_utf8_unicode_helper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\text_formatter\_precomp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
