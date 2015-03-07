@@ -25,20 +25,22 @@ using namespace std;
 int main(int argc, char** argv)
 {
 	// Узнаем какой ресурс скачиваем
-	string urlString = Options::getUrlForParsing(argc, argv);
-	
-	if (urlString.empty())	{
-		cout << "Not write url for downloading. Please try again." << endl;
-		return 0;
+	try
+	{
+		string urlString = Options::getUrlForParsing(argc, argv);
+
+		string res = Dowloader::downloadPage(urlString);
+
+		ParserAdapter hp;
+		string tunyHtml = hp.parse(res);
+
+		PrettyOut po(tunyHtml, 80);
+		cout << po << endl;
 	}
-
-	string res = Dowloader::downloadPage(urlString);
-
-	ParserAdapter hp;
-	string tunyHtml = hp.parse(res);
-
-	PrettyOut po(tunyHtml, 80);
-	cout << po << endl;
+	catch (const exception &e)
+	{
+		wcout << L"К сожалению программе не удалось выполнить заявленную опрацию: " << e.what() << endl;
+	}
 	return 0;
 }
 

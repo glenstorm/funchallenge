@@ -35,7 +35,7 @@ fn_(fn)
 	}
 	catch (property_tree::ini_parser_error& error)
 	{
-		cout	<< error.message() << ": " << error.filename() << ", line " << error.line() << std::endl;
+		cout << error.message() << ": " << error.filename() << ", line " << error.line() << std::endl;
 	}
 }
 
@@ -61,7 +61,7 @@ Options::getUrlForParsing(int argc, char** argv)
 		return vm["url"].as<string>();
 	}
 
-	return "";
+	throw runtime_error("Не введен url скачиваемой страницы!");
 }
 
 

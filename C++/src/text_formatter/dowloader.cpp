@@ -45,6 +45,10 @@ Dowloader::downloadPage(const string &url)
 		// always cleanup
 		curl_easy_cleanup(curl);
 	}
+	else
+	{
+		throw runtime_error("curl_easy_init не вернула экземпляр класса CURL");
+	}
 	return std::move(buffer);
 }
 
