@@ -50,7 +50,7 @@ ParserAdapter::cleantext(GumboNode* node) {
 			GumboVector* children = &node->v.element.children;
 			for (unsigned int i = 0; i < children->length; ++i)
 			{
-				const std::string text = cleantext((GumboNode*)children->data[i]);
+				std::string &&text = cleantext((GumboNode*)children->data[i]);
 				contents.append(text);
 			}
 
@@ -64,10 +64,7 @@ ParserAdapter::cleantext(GumboNode* node) {
 				if (node->v.element.tag == GUMBO_TAG_A) // Обрабатываем ссылки
 				{
 					GumboAttribute* href = gumbo_get_attribute(&node->v.element.attributes, "href"); // предполагаем, что href должен быть всегда. TODO цементнуть
-
-					ostringstream is;
-					is << " [" << href->value << "]";
-					contents.append(is.str());
+					contents.append(" [").append(href->value).append("] ");
 				}
 
 				// Теперь, если мы прошли </h1>, </h2>, </br>, <br/>, </p> тэг, то нужно перейти на другую строчку.
