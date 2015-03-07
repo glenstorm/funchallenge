@@ -1,4 +1,4 @@
-/*
+п»ї/*
 @author: Dmitry Borisov 2015
 
 This program is free software: you can redistribute it and/or modify
@@ -24,10 +24,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 class ParserAdapter
 {
 private:
-	/// Процедура вычистки html страницы от всякого мусора.
+	/// РџСЂРѕС†РµРґСѓСЂР° РІС‹С‡РёСЃС‚РєРё html СЃС‚СЂР°РЅРёС†С‹ РѕС‚ РІСЃСЏРєРѕРіРѕ РјСѓСЃРѕСЂР°.
 	std::string cleantext(GumboNode* node);
 
-	// Координаты начала вывода. Используемая библиотека не поддерживает xpath, поэтому пока жестко закодируем координату для lenta.ru
+	// РљРѕРѕСЂРґРёРЅР°С‚С‹ РЅР°С‡Р°Р»Р° РІС‹РІРѕРґР°. РСЃРїРѕР»СЊР·СѓРµРјР°СЏ Р±РёР±Р»РёРѕС‚РµРєР° РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚ xpath, РїРѕСЌС‚РѕРјСѓ РїРѕРєР° Р¶РµСЃС‚РєРѕ Р·Р°РєРѕРґРёСЂСѓРµРј РєРѕРѕСЂРґРёРЅР°С‚Сѓ РґР»СЏ lenta.ru
 	GumboTag tagStr_;
 	std::string divClass_;
 
@@ -36,7 +36,7 @@ private:
 
 public:
 	ParserAdapter(GumboTag gt = GUMBO_TAG_DIV, const std::string &divClass = "b-topic__content");
-	/// Возвращаем распарсенный и урезанную страничку html.
+	/// Р’РѕР·РІСЂР°С‰Р°РµРј СЂР°СЃРїР°СЂСЃРµРЅРЅС‹Р№ Рё СѓСЂРµР·Р°РЅРЅСѓСЋ СЃС‚СЂР°РЅРёС‡РєСѓ html.
 	std::string parse(const std::string &src);
 };
 

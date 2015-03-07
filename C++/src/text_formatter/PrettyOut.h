@@ -1,4 +1,4 @@
-/*
+п»ї/*
 @author: Dmitry Borisov 2015
 
 This program is free software: you can redistribute it and/or modify
@@ -25,12 +25,12 @@ class PrettyOut
 public:
 	explicit PrettyOut(const std::string &wrapStr, int width = 120);
 	~PrettyOut(){}
-	// Вывод в поток с ограничением длины.
+	// Р’С‹РІРѕРґ РІ РїРѕС‚РѕРє СЃ РѕРіСЂР°РЅРёС‡РµРЅРёРµРј РґР»РёРЅС‹.
 	friend std::ostream& operator<<(std::ostream& out, const PrettyOut& obj);
 private:
-	/// Максимальная ширина вывода.
+	/// РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ С€РёСЂРёРЅР° РІС‹РІРѕРґР°.
 	int width_;
-	/// Строка, которую будем выводить.
+	/// РЎС‚СЂРѕРєР°, РєРѕС‚РѕСЂСѓСЋ Р±СѓРґРµРј РІС‹РІРѕРґРёС‚СЊ.
 	std::string str_;
 };
 

@@ -1,4 +1,4 @@
-/*
+п»ї/*
 @author: Dmitry Borisov 2015
 
 This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,7 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-	// Узнаем какой ресурс скачиваем
+	// РЈР·РЅР°РµРј РєР°РєРѕР№ СЂРµСЃСѓСЂСЃ СЃРєР°С‡РёРІР°РµРј
 	string urlString = Options::getUrlForParsing(argc, argv);
 	
 	if (urlString.empty())	{

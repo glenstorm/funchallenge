@@ -1,4 +1,4 @@
-/*
+п»ї/*
 @author: Dmitry Borisov 2015
 
 This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@ beginAtricleNode_(nullptr)
 {}
 
 
-// Рекурсивно обходим html-дерево, спускаемся до текстов
+// Р РµРєСѓСЂСЃРёРІРЅРѕ РѕР±С…РѕРґРёРј html-РґРµСЂРµРІРѕ, СЃРїСѓСЃРєР°РµРјСЃСЏ РґРѕ С‚РµРєСЃС‚РѕРІ
 string
 ParserAdapter::cleantext(GumboNode* node) {
 	if (node->type == GUMBO_NODE_ELEMENT)
@@ -37,14 +37,14 @@ ParserAdapter::cleantext(GumboNode* node) {
 		if (node->v.element.tag != GUMBO_TAG_SCRIPT && node->v.element.tag != GUMBO_TAG_STYLE && 
 			node->v.element.tag != GUMBO_TAG_ASIDE)
 		{
-			// Ищем точку отсчета.
+			// РС‰РµРј С‚РѕС‡РєСѓ РѕС‚СЃС‡РµС‚Р°.
 			if (node->v.element.tag == tagStr_)
 			{
 				GumboAttribute* classAttr = gumbo_get_attribute(&node->v.element.attributes, "class");
 				if (classAttr && classAttr->value == divClass_)
 				{
-					beginParsing = true; // флажок начала вывода.
-					beginAtricleNode_ = node; // Выше этой вершины не поднимаемсяю
+					beginParsing = true; // С„Р»Р°Р¶РѕРє РЅР°С‡Р°Р»Р° РІС‹РІРѕРґР°.
+					beginAtricleNode_ = node; // Р’С‹С€Рµ СЌС‚РѕР№ РІРµСЂС€РёРЅС‹ РЅРµ РїРѕРґРЅРёРјР°РµРјСЃСЏСЋ
 				}
 			}
 
@@ -56,23 +56,23 @@ ParserAdapter::cleantext(GumboNode* node) {
 				contents.append(text);
 			}
 
-			// Закончили вывод в файл, как вернулись в ту же вершину, с которой начинали.
+			// Р—Р°РєРѕРЅС‡РёР»Рё РІС‹РІРѕРґ РІ С„Р°Р№Р», РєР°Рє РІРµСЂРЅСѓР»РёСЃСЊ РІ С‚Сѓ Р¶Рµ РІРµСЂС€РёРЅСѓ, СЃ РєРѕС‚РѕСЂРѕР№ РЅР°С‡РёРЅР°Р»Рё.
 			if (beginAtricleNode_ == node)
 				beginParsing = false;
 
 			if (beginParsing)
 			{
-				// Устанавливаем куда ссылка идет.
-				if (node->v.element.tag == GUMBO_TAG_A) // Обрабатываем ссылки
+				// РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РєСѓРґР° СЃСЃС‹Р»РєР° РёРґРµС‚.
+				if (node->v.element.tag == GUMBO_TAG_A) // РћР±СЂР°Р±Р°С‚С‹РІР°РµРј СЃСЃС‹Р»РєРё
 				{
-					GumboAttribute* href = gumbo_get_attribute(&node->v.element.attributes, "href"); // предполагаем, что href должен быть всегда. TODO цементнуть
+					GumboAttribute* href = gumbo_get_attribute(&node->v.element.attributes, "href"); // РїСЂРµРґРїРѕР»Р°РіР°РµРј, С‡С‚Рѕ href РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РІСЃРµРіРґР°. TODO С†РµРјРµРЅС‚РЅСѓС‚СЊ
 
 					ostringstream is;
 					is << " [" << href->value << "]";
 					contents.append(is.str());
 				}
 
-				// Теперь, если мы прошли </h1>, </h2>, </br>, <br/>, </p> тэг, то нужно перейти на другую строчку.
+				// РўРµРїРµСЂСЊ, РµСЃР»Рё РјС‹ РїСЂРѕС€Р»Рё </h1>, </h2>, </br>, <br/>, </p> С‚СЌРі, С‚Рѕ РЅСѓР¶РЅРѕ РїРµСЂРµР№С‚Рё РЅР° РґСЂСѓРіСѓСЋ СЃС‚СЂРѕС‡РєСѓ.
 				if (node->v.element.tag == GUMBO_TAG_H1 || node->v.element.tag == GUMBO_TAG_H2 ||
 					node->v.element.tag == GUMBO_TAG_H3 || node->v.element.tag == GUMBO_TAG_H4 ||
 					node->v.element.tag == GUMBO_TAG_H5 || node->v.element.tag == GUMBO_TAG_H6 ||
@@ -107,7 +107,7 @@ ParserAdapter::parse(const std::string &src)
 		throw std::runtime_error("Unable to get html-root!!!");
 
 	std::string out = "";
-	// Зацементировали.
+	// Р—Р°С†РµРјРµРЅС‚РёСЂРѕРІР°Р»Рё.
 	try
 	{
 		out = cleantext(output->root);
@@ -118,7 +118,7 @@ ParserAdapter::parse(const std::string &src)
 	}
 	catch (...)
 	{
-		cout << "Непредвиденное исключение!!!";
+		cout << "РќРµРїСЂРµРґРІРёРґРµРЅРЅРѕРµ РёСЃРєР»СЋС‡РµРЅРёРµ!!!";
 	}
 	// Do stuff with output->root
 	gumbo_destroy_output(&kGumboDefaultOptions, output);

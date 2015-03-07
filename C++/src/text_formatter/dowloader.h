@@ -1,4 +1,4 @@
-/*
+п»ї/*
 @author: Dmitry Borisov 2015
 
 This program is free software: you can redistribute it and/or modify
@@ -29,11 +29,11 @@ public:
 	Dowloader(){};
 	/// Dtor
 	~Dowloader(){};
-	/// Скачиваем страницу в строчку.
+	/// РЎРєР°С‡РёРІР°РµРј СЃС‚СЂР°РЅРёС†Сѓ РІ СЃС‚СЂРѕС‡РєСѓ.
 	static std::string downloadPage(const std::string& url);
 
 private:
-	/// Для отладки записываем скачанные файлы в файл.
+	/// Р”Р»СЏ РѕС‚Р»Р°РґРєРё Р·Р°РїРёСЃС‹РІР°РµРј СЃРєР°С‡Р°РЅРЅС‹Рµ С„Р°Р№Р»С‹ РІ С„Р°Р№Р».
 	static int writer(char *data, size_t size, size_t nmemb, std::string *buffer);
 };
 

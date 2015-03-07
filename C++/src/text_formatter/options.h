@@ -1,4 +1,4 @@
-/*
+п»ї/*
 @author: Dmitry Borisov 2015
 
 This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
 @class Options 
-@brief Класс, ответственный за считывание настроек для данной программы.
+@brief РљР»Р°СЃСЃ, РѕС‚РІРµС‚СЃС‚РІРµРЅРЅС‹Р№ Р·Р° СЃС‡РёС‚С‹РІР°РЅРёРµ РЅР°СЃС‚СЂРѕРµРє РґР»СЏ РґР°РЅРЅРѕР№ РїСЂРѕРіСЂР°РјРјС‹.
 */
 class Options
 {
@@ -30,10 +30,10 @@ public:
 	Options(const std::string& fn = "rulez.ini");
 	~Options(){};
 
-	// Разбор и заполнение структуры 
+	// Р Р°Р·Р±РѕСЂ Рё Р·Р°РїРѕР»РЅРµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ 
 	static std::string getUrlForParsing(int argc, char** argv);
 private:
-	// Имя файла с настройками.
+	// РРјСЏ С„Р°Р№Р»Р° СЃ РЅР°СЃС‚СЂРѕР№РєР°РјРё.
 	std::string fn_;
 
 
