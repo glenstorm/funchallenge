@@ -29,9 +29,12 @@ private:
 	// Координаты начала вывода. Используемая библиотека не поддерживает xpath, поэтому пока жестко закодируем координату для lenta.ru
 	GumboTag tagStr_;
 	std::string divClass_;
-
+	/// 
 	bool beginParsing;
+	/// 
 	GumboNode* beginAtricleNode_;
+	/// Готовим парсер к следующему парсингу.
+	void reset()
 
 public:
 	ParserAdapter(GumboTag gt = GUMBO_TAG_DIV, const std::string &divClass = "b-topic__content");

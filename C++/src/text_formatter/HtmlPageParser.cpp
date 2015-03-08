@@ -21,10 +21,10 @@ using namespace std;
 
 ParserAdapter::ParserAdapter(GumboTag gt, const std::string &divClass) :
 tagStr_(gt),
-divClass_(divClass),
-beginParsing(false),
-beginAtricleNode_(nullptr)
-{}
+divClass_(divClass)
+{
+	reset();
+}
 
 
 // Рекурсивно обходим html-дерево, спускаемся до текстов
@@ -60,11 +60,12 @@ ParserAdapter::cleantext(GumboNode* node) {
 
 			if (beginParsing)
 			{
-				// Устанавливаем куда ссылка идет.
+				// Устанавливаем, куда ссылка идет.
 				if (node->v.element.tag == GUMBO_TAG_A) // Обрабатываем ссылки
 				{
-					GumboAttribute* href = gumbo_get_attribute(&node->v.element.attributes, "href"); // предполагаем, что href должен быть всегда. TODO цементнуть
-					contents.append(" [").append(href->value).append("] ");
+					GumboAttribute* href = gumbo_get_attribute(&node->v.element.attributes, "href");
+					if (href)
+						contents.append(" [").append(href->value).append("] ");
 				}
 
 				// Теперь, если мы прошли </h1>, </h2>, </br>, <br/>, </p> тэг, то нужно перейти на другую строчку.
@@ -101,9 +102,17 @@ ParserAdapter::parse(const std::string &src)
 	if (nullptr == output)
 		throw std::runtime_error("Unable to get html-root!!!");
 
+	reset();
 	std::string out = cleantext(output->root);
 	// Do stuff with output->root
 	gumbo_destroy_output(&kGumboDefaultOptions, output);
 
 	return std::move(out);
+}
+
+void 
+ParserAdapter::reset()
+{
+	beginParsing = false;
+	beginAtricleNode_ = nullptr;
 }
