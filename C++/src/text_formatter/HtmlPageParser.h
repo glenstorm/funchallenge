@@ -34,7 +34,7 @@ private:
 	/// 
 	GumboNode* beginAtricleNode_;
 	/// Готовим парсер к следующему парсингу.
-	void reset()
+	void reset();
 
 public:
 	ParserAdapter(GumboTag gt = GUMBO_TAG_DIV, const std::string &divClass = "b-topic__content");
