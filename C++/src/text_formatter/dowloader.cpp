@@ -24,41 +24,39 @@ using namespace std;
 string
 Dowloader::downloadPage(const string &url)
 {
-	// cout << "url = " << url << endl;
-
 	CURLcode res = CURL_LAST;
 	string buffer = "";
 
 	CURL *curl = curl_easy_init();
-	if (curl) {
-		curl_easy_setopt(curl, CURLOPT_HEADER, 0);
-		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writer);
-		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
-		curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+	if ( curl ) {
+		curl_easy_setopt( curl, CURLOPT_HEADER, 0 );
+		curl_easy_setopt( curl, CURLOPT_WRITEFUNCTION, writer );
+		curl_easy_setopt( curl, CURLOPT_WRITEDATA, &buffer );
+		curl_easy_setopt( curl, CURLOPT_URL, url.c_str( ) );
 
 		// Perform the request, res will get the return code
-		res = curl_easy_perform(curl);
+		res = curl_easy_perform( curl );
 		// Check for errors
-		if (CURLE_OK != res)
-			fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+		if ( CURLE_OK != res )
+			fprintf( stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror( res ) );
 
 		// always cleanup
-		curl_easy_cleanup(curl);
+		curl_easy_cleanup( curl );
 	}
 	else
 	{
-		throw runtime_error("curl_easy_init не вернула экземпляр класса CURL");
+		throw runtime_error( "curl_easy_init не вернула экземпляр класса CURL" );
 	}
-	return std::move(buffer);
+	return buffer;
 }
 
 int
 Dowloader::writer(char *data, size_t size, size_t nmemb, string *buffer)
 {
 	int result = 0;
-	if (buffer != NULL)
+	if ( NULL != buffer )
 	{
-		buffer->append(data, size * nmemb);
+		buffer->append( data, size * nmemb );
 		result = size * nmemb;
 	}
 	return result;
