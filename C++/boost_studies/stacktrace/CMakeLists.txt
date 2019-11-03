@@ -26,7 +26,7 @@ add_executable( ${PROJECT_NAME} ${SOURCE} )
 target_link_libraries( 	${PROJECT_NAME}
 			#boost_stacktrace_backtrace
 			#backtrace
-			boost_stacktrace_addr2line
+			#boost_stacktrace_addr2line
 			dl
 			${Boost_LIBRARIES}
 )
