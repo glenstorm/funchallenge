@@ -8,11 +8,6 @@ public:
     B():A()
     {}
 
-    virtual void setI( int _i )
-    {
-        A::setI(i);
-    }
-
     virtual void output()
     {
         std::cout << "hello from B: i = " << i << std::endl;
