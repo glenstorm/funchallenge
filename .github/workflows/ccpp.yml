@@ -12,10 +12,6 @@ jobs:
     - name: make_build_fldr
       run: mkdir build && cd build 
     - name: configure
-      run: ./configure
+      run: cmake ../ -GNinja
     - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+      run: ninja
